@@ -1,0 +1,44 @@
+<form 
+    class="container p-5" 
+    [formGroup]="loginForm"
+    (ngSubmit)="$event.preventDefault(); submitForm()"
+>
+    <div class="mb-3">
+        <label class="form-label">First name</label>
+        <input type="text" class="form-control" formControlName="firstName">
+        <ng-container *ngIf="validated">
+            <small class="text-danger" *ngIf="loginForm.get('firstName')?.hasError('required')">First name is required.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" formControlName="username">
+        <ng-container *ngIf="validated">
+            <small class="text-danger" *ngIf="loginForm.get('username')?.hasError('required')">Username is required.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password">
+        <ng-container *ngIf="validated">
+            <small class="text-danger" *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</small>
+            <small class="text-danger" *ngIf="loginForm.get('password')?.hasError('minlength')">Password has to be at least 8 characters long.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Repeat password</label>
+        <input type="password" class="form-control" formControlName="repeatPassword">
+        <ng-container *ngIf="validated">
+            <small class="text-danger" *ngIf="loginForm.get('repeatPassword')?.hasError('required')">Repeat password is required.</small>
+            <small class="text-danger" *ngIf="loginForm.get('repeatPassword')?.hasError('minlength')">Repeat password has to be at least 8 characters long.</small>
+            <br/><small class="text-danger" *ngIf="loginForm.hasError('mismatch')">Repeat password does not match password.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

@@ -1,0 +1,47 @@
+<form 
+    name="loginForm"
+    #f="ngForm"
+    class="container p-5" 
+    (ngSubmit)="$event.preventDefault(); submitForm()"
+    novalidate
+    [appMatchPassword]="['password', 'repeatPassword']"
+>
+    <div class="mb-3">
+        <label class="form-label">First name</label>
+        <input type="text" class="form-control" [(ngModel)]="loginForm.firstName" name="firstName" #firstName="ngModel" required>
+        <ng-container *ngIf="loginForm.validated && firstName.errors">
+            <small class="text-danger" *ngIf="firstName.errors['required']">First name is required.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" [(ngModel)]="loginForm.username" name="username" #username="ngModel" required>
+        <ng-container *ngIf="loginForm.validated && username.errors">
+            <small class="text-danger" *ngIf="username.errors['required']">Username is required.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="loginForm.password" name="password" #password="ngModel" required minlength="8">
+        <ng-container *ngIf="loginForm.validated && password.errors">
+            <small class="text-danger" *ngIf="password.errors['required']">Password is required.</small>
+            <small class="text-danger" *ngIf="password.errors['minlength']">Password has to be at least 8 characters long.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Repeat password</label>
+        <input type="password" class="form-control" [(ngModel)]="loginForm.repeatPassword" name="repeatPassword" #repeatPassword="ngModel" required minlength="8">
+        <ng-container *ngIf="loginForm.validated && repeatPassword.errors">
+            <small class="text-danger" *ngIf="repeatPassword.errors['required']">Repeat password is required.</small>
+            <small class="text-danger" *ngIf="repeatPassword.errors['minlength']">Repeat password has to be at least 8 characters long.</small>
+            <br/><small class="text-danger" *ngIf="repeatPassword.errors['matching']">Repeat password does not match password.</small>
+        </ng-container>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
