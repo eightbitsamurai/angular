@@ -14,6 +14,6 @@ export class IndexComponent {
   users: User[] = [];
   constructor(private userService: UserService) {}
   ngOnInit() {
-    this.userService.getUsers().subscribe((data: any) => this.users = data);
+    this.userService.getUsers().subscribe((data: User[]) => this.users = data);
   }
 }
