@@ -1,11 +1,11 @@
 <form 
     name="loginForm"
     #f="ngForm"
-    class="container p-5" 
-    (ngSubmit)="$event.preventDefault(); submitForm()"
+    (ngSubmit)="$event.preventDefault(); submitForm(f)"
     novalidate
     [appMatchPassword]="['password', 'repeatPassword']"
 >
+    <h3 class="my-3">Template form</h3>
     <div class="mb-3">
         <label class="form-label">First name</label>
         <input type="text" class="form-control" [(ngModel)]="loginForm.firstName" name="firstName" #firstName="ngModel" required>
@@ -37,7 +37,7 @@
         <ng-container *ngIf="loginForm.validated && repeatPassword.errors">
             <small class="text-danger" *ngIf="repeatPassword.errors['required']">Repeat password is required.</small>
             <small class="text-danger" *ngIf="repeatPassword.errors['minlength']">Repeat password has to be at least 8 characters long.</small>
-            <br/><small class="text-danger" *ngIf="repeatPassword.errors['matching']">Repeat password does not match password.</small>
+            <small class="text-danger" *ngIf="repeatPassword.errors['matching']">Repeat password does not match password.</small>
         </ng-container>
     </div>
 

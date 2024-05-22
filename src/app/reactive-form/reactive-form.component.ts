@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule]
+  imports: [ReactiveFormsModule, CommonModule],
+  providers: [UserService]
 })
 export class ReactiveFormComponent {
+  userService = inject(UserService);
   loginForm!: FormGroup;
   validated: boolean;
 
@@ -27,7 +30,7 @@ export class ReactiveFormComponent {
   submitForm() {
     this.validated = true;
     if (this.loginForm.valid) {
-      console.log('form submitted');
+      this.userService.login(this.loginForm.value).subscribe();
     }
   }
 
@@ -35,7 +38,6 @@ export class ReactiveFormComponent {
     return (control: AbstractControl): ValidationErrors | null => {
       const password = control.value["password"];
       const repeatPassword = control.value["repeatPassword"];
-      console.log(password, repeatPassword)
       if (password !== repeatPassword) {
         return { mismatch: true };
       } else {

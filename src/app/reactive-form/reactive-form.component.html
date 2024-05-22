@@ -1,8 +1,8 @@
 <form 
-    class="container p-5" 
     [formGroup]="loginForm"
     (ngSubmit)="$event.preventDefault(); submitForm()"
 >
+    <h3 class="my-3">Reactive form</h3>
     <div class="mb-3">
         <label class="form-label">First name</label>
         <input type="text" class="form-control" formControlName="firstName">
@@ -31,10 +31,12 @@
     <div class="mb-3">
         <label class="form-label">Repeat password</label>
         <input type="password" class="form-control" formControlName="repeatPassword">
-        <ng-container *ngIf="validated">
-            <small class="text-danger" *ngIf="loginForm.get('repeatPassword')?.hasError('required')">Repeat password is required.</small>
-            <small class="text-danger" *ngIf="loginForm.get('repeatPassword')?.hasError('minlength')">Repeat password has to be at least 8 characters long.</small>
-            <br/><small class="text-danger" *ngIf="loginForm.hasError('mismatch')">Repeat password does not match password.</small>
+        <ng-container *ngIf="validated" >
+            <div style="display: flex; flex-direction: column;">
+                <small class="text-danger" *ngIf="loginForm.get('repeatPassword')?.hasError('required')">Repeat password is required.</small>
+                <small class="text-danger" *ngIf="loginForm.get('repeatPassword')?.hasError('minlength')">Repeat password has to be at least 8 characters long.</small>
+                <small class="text-danger" *ngIf="loginForm.hasError('mismatch')">Repeat password does not match password.</small>
+            </div>
         </ng-container>
     </div>
 

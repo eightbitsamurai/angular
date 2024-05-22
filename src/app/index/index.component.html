@@ -1,0 +1,11 @@
+<h3 class="my-3">Currently logged users</h3>
+
+<div *ngIf="users.length === 0 else showItems">
+    No users have logged in during this session
+</div>
+
+<ng-template #showItems>
+    <ol>
+        <li *ngFor="let user of users">{{user?.firstName}} {{user?.username}}</li>
+    </ol>
+</ng-template>
