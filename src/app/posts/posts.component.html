@@ -1,0 +1,20 @@
+<div *ngIf="loading">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status"></div>
+    </div>
+</div>
+<div *ngIf="!loading" class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <post-info [postCount]="postCount" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <post-column [posts]="oddPosts" columnTitle="Odd posts" />
+        </div>
+        <div class="col-md-6">
+            <post-column [posts]="evenPosts" columnTitle="Even posts" />
+        </div>
+    </div>
+</div>

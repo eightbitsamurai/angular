@@ -1,0 +1,6 @@
+<div>
+    <h3>{{columnTitle}}</h3>
+    <ng-container *ngFor="let post of posts">
+        <post-component [post]="post"></post-component>
+    </ng-container>
+</div>
