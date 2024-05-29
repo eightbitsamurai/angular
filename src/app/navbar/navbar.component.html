@@ -13,8 +13,8 @@
             <a class="nav-link" routerLink="/posts">Posts</a>
         </li>
     </ul>
-    <span class="navbar-text">
-        Currently logged in as {{user?.firstName}}
+    <span class="navbar-text" *ngIf="!!user">
+        Currently logged in as {{user.firstName}}
         <button type="button" class="btn btn-outline-info" (click)="handleLogout();">Logout</button>
     </span>
 </nav>

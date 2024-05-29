@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, SkipSelf } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatchPasswordDirective } from './match-password.directive';
 import { UserService } from '../user.service';
@@ -8,12 +8,12 @@ import { UserService } from '../user.service';
   selector: 'app-template-form',
   standalone: true,
   imports: [CommonModule, FormsModule, MatchPasswordDirective],
-  providers: [UserService],
   templateUrl: './template-form.component.html'
 })
 
 export class TemplateFormComponent {
-  userService = inject(UserService);
+  constructor(@SkipSelf() private userService: UserService) {}
+
   loginForm = {
     firstName: '',
     username: '',
