@@ -6,15 +6,15 @@
 <div *ngIf="!loading" class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <post-info [postCount]="postCount" />
+            <post-info />
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <post-column [posts]="oddPosts" columnTitle="Odd posts" />
+            <post-column [showOddPosts]="true" columnTitle="Odd posts" />
         </div>
         <div class="col-md-6">
-            <post-column [posts]="evenPosts" columnTitle="Even posts" />
+            <post-column [showOddPosts]="false" columnTitle="Even posts" />
         </div>
     </div>
 </div>

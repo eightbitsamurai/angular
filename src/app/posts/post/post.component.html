@@ -1,4 +1,7 @@
 <div>
-    <p>Post #{{post?.id}}: {{post?.title}}</p>
-    <p>{{post?.body}}</p>
+    <p>
+        Post #{{post.id}}: {{post.title}} 
+        <span class="bi bi-trash" style="color: red; cursor: pointer;" (click)="deletePost(post.id)"></span>
+    </p>
+    <p>{{post.body}}</p>
 </div>

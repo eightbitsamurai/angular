@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { PostsService } from '../../posts.service';
 
 @Component({
   selector: 'post-info',
@@ -7,5 +8,12 @@ import { Component, Input } from '@angular/core';
   templateUrl: './post-info.component.html',
 })
 export class PostInfoComponent {
- @Input() postCount = 0;
+  postsService = inject(PostsService);
+  postCount = 0;
+
+  ngOnInit() {
+    this.postsService.postCount$.subscribe((value) => {
+      this.postCount = value;
+    });
+  }
 }

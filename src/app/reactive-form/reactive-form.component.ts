@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { User } from '../common/user';
 
 @Component({
   selector: 'app-reactive-form',
@@ -12,6 +14,7 @@ import { UserService } from '../user.service';
 })
 export class ReactiveFormComponent {
   userService = inject(UserService);
+  router = inject(Router);
   loginForm!: FormGroup;
   validated: boolean;
 
@@ -30,7 +33,10 @@ export class ReactiveFormComponent {
   submitForm() {
     this.validated = true;
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value).subscribe();
+      this.userService.login(this.loginForm.value).subscribe(() => {
+        localStorage.setItem('user', JSON.stringify(this.loginForm.value));
+        this.router.navigateByUrl('/');
+      });
     }
   }
 
