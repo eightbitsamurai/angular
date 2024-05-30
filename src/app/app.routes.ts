@@ -4,10 +4,12 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { IndexComponent } from './index/index.component';
 import { PostsComponent } from './posts/posts.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },
     { path: 'template', component: TemplateFormComponent },
     { path: 'reactive', component: ReactiveFormComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] }
 ];

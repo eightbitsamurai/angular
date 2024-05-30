@@ -14,7 +14,7 @@ import { UserService } from '../user.service';
 export class TemplateFormComponent {
   constructor(@SkipSelf() private userService: UserService) {}
 
-  loginForm = {
+  templateForm = {
     firstName: '',
     username: '',
     password: '',
@@ -23,9 +23,9 @@ export class TemplateFormComponent {
   }
   
   submitForm(f: NgForm) {
-    this.loginForm.validated = true;
+    this.templateForm.validated = true;
     if (f.valid) {
-      this.userService.login(f.value).subscribe();
+      this.userService.register(f.value).subscribe();
     }
   }
 }

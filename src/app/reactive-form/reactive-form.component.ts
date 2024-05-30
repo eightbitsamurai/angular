@@ -11,11 +11,11 @@ import { UserService } from '../user.service';
   providers: [UserService]
 })
 export class ReactiveFormComponent {
-  loginForm!: FormGroup;
+  reactiveForm!: FormGroup;
   validated: boolean;
 
   constructor(@SkipSelf() private userService: UserService) {
-    this.loginForm = new FormGroup({
+    this.reactiveForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -28,8 +28,8 @@ export class ReactiveFormComponent {
 
   submitForm() {
     this.validated = true;
-    if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value).subscribe();
+    if (this.reactiveForm.valid) {
+      this.userService.register(this.reactiveForm.value).subscribe();
     }
   }
 

@@ -1,3 +1,4 @@
+// to run server: node server.mjs
 import express from "express";
 import cors from "cors";
 
@@ -7,24 +8,24 @@ app.use(cors());
 app.use(express.json());
 
 let users = [];
-// to run server: node server.mjs
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-  });
+  console.log(`Server running at http://localhost:${port}`);
+});
 
-app.get('/users', (req, res) => {
-    res.json(users);
-  });
+app.get('/allUsers', (req, res) => {
+  res.json(users);
+});
 
-app.get('/user', (req, res) => {
-    res.json(users[users.length - 1]);
-  });
+app.post('/register', (req, res) => {
+  users.push(req.body);
+  res.status(201).send();
+});
 
 app.post('/login', (req, res) => {
-    users.push(req.body);
-    res.status(201).send();
-  });
+  const user = users.filter(u => u.username === req.body.username & u.password === req.body.password)?.[0];
+  user ? res.status(200).send(user) : res.status(401).json("Cannot log in");
+});
 
 app.post('/logout', (req, res) => {
   res.status(200).send();

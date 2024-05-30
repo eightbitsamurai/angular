@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { User } from './common/user';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { Credentials } from './common/credentials';
+import e from 'cors';
 
 @Injectable({
   providedIn: 'root'
@@ -19,26 +21,34 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:3000/users'); 
+    return this.http.get<User[]>('http://localhost:3000/allUsers'); 
   }
 
-  login(user: User) {
-    this.currentUser.next(user);
-    return this.http.post<User>('http://localhost:3000/login', user).pipe(
+  register(user: User) {
+    return this.http.post<User>('http://localhost:3000/register', user).pipe(
       map(() => {
-        localStorage.setItem('user', JSON.stringify(user));
+        this.router.navigateByUrl('/');
+      })
+    );
+  }
+
+  login(credentials: Credentials) {
+    return this.http.post<User>('http://localhost:3000/login', credentials).pipe(
+      map((res: User) => {
+        localStorage.setItem('user', JSON.stringify(res));
+        this.currentUser.next(res);
         this.router.navigateByUrl('/posts');
       })
     );
   }
 
   logout() {
-    this.currentUser.next(null);
     return this.http.post('http://localhost:3000/logout', {}).pipe(
       map(() => {
         localStorage.removeItem('user');
+        this.currentUser.next(null);
         this.router.navigateByUrl('/');
       })
-    );;
+    );
   }
 }
