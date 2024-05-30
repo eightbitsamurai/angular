@@ -1,8 +1,8 @@
 import { Component, SkipSelf} from '@angular/core';
-import { UserService } from '../user.service';
-import { User } from '../common/user';
+import { User } from '../../types/user';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'navbar',

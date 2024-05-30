@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, SkipSelf } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
-  providers: [UserService]
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class ReactiveFormComponent {
   reactiveForm!: FormGroup;

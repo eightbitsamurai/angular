@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { PostsService } from '../posts.service';
 import { CommonModule } from '@angular/common';
 import { PostColumnComponent } from "./post-column/post-column.component";
 import { PostInfoComponent } from "./post-info/post-info.component";
+import { PostsService } from '../services/posts.service';
 
 @Component({
     selector: 'app-posts',

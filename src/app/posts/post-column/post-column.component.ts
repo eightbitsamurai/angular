@@ -1,8 +1,8 @@
 import { Component, Input, inject } from '@angular/core';
-import { Post } from '../../common/post';
+import { Post } from '../../types/post';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from "../post/post.component";
-import { PostsService } from '../../posts.service';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
     selector: 'post-column',

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, SkipSelf } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatchPasswordDirective } from './match-password.directive';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-template-form',

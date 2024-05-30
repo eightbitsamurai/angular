@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { User } from './common/user';
-import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
+import { User } from './../types/user';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
-import { Credentials } from './common/credentials';
-import e from 'cors';
+import { Credentials } from '../types/credentials';
 
 @Injectable({
   providedIn: 'root'

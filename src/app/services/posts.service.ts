@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
-import { Post } from './common/post';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Post } from '../types/post';
 
 @Injectable({
   providedIn: 'root'

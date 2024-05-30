@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { TemplateFormComponent } from './template-form/template-form.component';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import { IndexComponent } from './index/index.component';
+import { TemplateFormComponent } from './auth/template-form/template-form.component';
+import { ReactiveFormComponent } from './auth/reactive-form/reactive-form.component';
+import { IndexComponent } from './common/index/index.component';
 import { PostsComponent } from './posts/posts.component';
 import { AuthGuard } from './helpers/auth.guard';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
     { path: '', component: IndexComponent },

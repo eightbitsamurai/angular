@@ -1,5 +1,5 @@
-import { Component, Input, inject } from '@angular/core';
-import { PostsService } from '../../posts.service';
+import { Component, inject } from '@angular/core';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'post-info',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { UserService } from '../user.service';
-import { User } from '../common/user';
+import { Component } from '@angular/core';
+import { User } from '../../types/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'index',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, SkipSelf } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'login',
