@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header post-header">
+        <div>{{blogPost.title}} by {{blogPost.username}}</div>
+        <div class="button-wrapper">
+          <button type="button" class="btn btn-outline-info btn-sm" (click)="editPost()"><i class="bi bi-pencil"></i></button>
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="deletePost()"><i class="bi bi-trash3"></i></button>
+        </div>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{blogPost.body}}</p>
+      </blockquote>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.post-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+}

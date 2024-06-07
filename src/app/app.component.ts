@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserService } from './services/user.service';
+import { BlogService } from './services/blog.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  constructor(private router: Router, userService: UserService) {
+  constructor(private router: Router, userService: UserService, blogService: BlogService) {
   }
   title = 'form-app';
 }

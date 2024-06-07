@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 blog-header mb-3">
+            <h2>Blog posts</h2>
+            <button type="button" class="btn btn-outline-success" (click)="addNewPost()">Add new post</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 post-wrapper">
+            <ng-container *ngFor="let blogPost of blogPosts">
+                <blog-post [blogPost]="blogPost" />
+            </ng-container>
+        </div>
+    </div>
+    <blog-form></blog-form>
+</div>
